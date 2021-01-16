@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Simple Counter</title>
+		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+
+		<style>
+			h2 {
+				color: green;
+			}
+		</style>
+	</head>
+	<body class="container">
+		<h1>Counter</h1>
+		<h2 class="counter">0</h2>
+		<a class="decrease" href="#">- Decrease</a>
+		<a class="reset"" href="#">Reset</a>
+		<a class="increase" href="#">Increase +</a>
+
+
+		<script>
+			const counterText = document.querySelector('.counter')
+			const decrease = document.querySelector('.decrease')
+			const reset = document.querySelector('.reset')
+			const increase = document.querySelector('.increase')
+
+			let count = parseInt(counterText.innerHTML)
+
+			function paintNumber(count){
+				if (count >= 0){ 
+					counterText.style.color = 'green'
+				}else if(count <= 0) {
+					counterText.style.color = 'red'
+				}
+			}
+
+			decrease.addEventListener('click', ()=>{
+				count -= 1 
+				counterText.innerHTML = count
+				paintNumber(count)
+			})
+			
+			reset.addEventListener('click', ()=>{
+				count = 0
+				counterText.innerHTML = count
+				paintNumber(count)
+			})
+
+			increase.addEventListener('click', ()=>{
+				count += 1
+				counterText.innerHTML = count
+				paintNumber(count)
+			})
+		
+		</script>
+	</body>
+</html>
