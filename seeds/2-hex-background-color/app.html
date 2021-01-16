@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hex Color Changer</title>
+	</head>
+
+	<body>
+		<input class="input" type="text" placeholder="#111111" />
+		<input class="button" type="button" value="CHANGE COLOR" />
+		<script>
+			// Get html element
+			const PAGE = document.querySelector('html')
+
+			// Set the bg to black.
+			PAGE.style.backgroundColor = '#111111'
+
+			// Gather elements
+			const BUTTON = document.querySelector('.button')
+			const INPUT = document.querySelector('.input')
+
+			// Create array of possible HEX color values.
+			const HEX = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
+
+			// Get a random num given a min and max.
+			function random(min, max) {
+				return Math.floor(min + Math.random() * (max - min))
+			}
+
+			// Create a random hex color by randomly picking from array of HEX
+			function changeColor() {
+				let color = ''
+				for (let index = 0; index < 6; index++) {
+					color += HEX[random(0, 14)]
+				}
+				return color
+			}
+
+			// On click change the background color to a random hex color value
+			BUTTON.addEventListener('click', () => {
+				let newColor = '#' + changeColor()
+				PAGE.style.backgroundColor = newColor
+				INPUT.value = newColor
+			})
+
+			INPUT.addEventListener('keyup', () => {
+				if (
+					INPUT !== '' &&
+					(INPUT.value.length == 7) | (INPUT !== '') &&
+					INPUT.value.length == 4
+				) {
+					PAGE.style.backgroundColor = INPUT.value
+					console.log(INPUT.value)
+				}
+			})
+		</script>
+	</body>
+</html>
