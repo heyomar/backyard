@@ -8,6 +8,74 @@
 			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
 			rel="stylesheet"
 		/>
+
+		<style>
+			html {
+				background: #222;
+				color: #fff;
+			}
+
+			.random-quote-button {
+				display: block;
+			}
+
+			img {
+				width: auto;
+				height: 300px;
+			}
+		</style>
 	</head>
-	<body></body>
+	<body>
+		<h2>Wise Words</h2>
+		<div>
+			<img class="quote-image" src="" alt="quote author image" />
+			<p class="quote"></p>
+			<p class="author"></p>
+			<a href="#" class="last">LAST</a>
+			<a href="#" class="next">NEXT</a>
+			<!-- <a href="#" class="random-quote-button">Random Quote</a> -->
+		</div>
+
+		<script>
+			const nextQuoteButton = document.querySelector('.next')
+			const lastQuoteButton = document.querySelector('.last')
+
+			let QuoteAuthor = document.querySelector('.author')
+			let QuoteParagraph = document.querySelector('.quote')
+			let QuoteImage = document.querySelector('.quote-image')
+
+			const Quotes = [
+				{
+					author: 'Rumi',
+					quote:
+						'Your task is not to seek for love, but merely to seek and find all the barriers within yourself that you have built against it',
+					image: 'rumi.jpeg',
+				},
+				{
+					author: 'Benjamin Franklin',
+					quote:
+						'Either write something worth reading or do something worth writing.',
+					image: 'ben.jpeg',
+				},
+				{
+					author: 'Marcus Aurelius',
+					quote: 'The universe is change; our life is what our thoughts make it.',
+					image: 'marcus.jpeg',
+				},
+			]
+
+			function randomNumber(min, max) {
+				min = Math.ceil(min)
+				max = Math.floor(max)
+				return Math.floor(Math.random() * (max - min + 1)) + min
+			}
+
+			nextQuoteButton.addEventListener('click', () => {
+				let index = randomNumber(0, 2)
+				QuoteParagraph.innerHTML = Quotes[index]['quote']
+				QuoteAuthor.innerHTML = Quotes[index]['author']
+				QuoteImage.src = Quotes[index]['image']
+			})
+		</script>
+	</body>
 </html>
