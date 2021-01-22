@@ -4,25 +4,49 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Pass The Message</title>
+		<style>
+			.hidden {
+				visibility: hidden;
+				color: red;
+			}
+
+			.show {
+				visibility: visible;
+			}
+		</style>
 	</head>
 	<body>
-		<input class="message-input" type="text" />
-		<button class="send-message-btn">Send Message</button>
+		<form action="" class="form">
+			<input class="message-input" type="text" />
+			<button class="send-message-btn">Send Message</button>
+		</form>
+		<p class="hidden feedback">Please write something into the field.</p>
 
 		<h3>Last Message:</h3>
 		<p class="last-message"></p>
 
 		<script>
-			let messageInput = document.querySelector('.message-input')
-			const sendButton = document.querySelector('.send-message-btn')
+			const form = document.querySelector('.form')
+			const messageInput = document.querySelector('.message-input')
+			const lastMessage = document.querySelector('.last-message')
+			const feedback = document.querySelector('.feedback')
 
-			let lastMessage = document.querySelector('.last-message')
-
-			sendButton.addEventListener('click', (e) => {
-				e.preventDefault()
+			function replaceMessage() {
 				let message = messageInput.value
 				messageInput.value = ''
 				lastMessage.innerHTML = message
+			}
+
+			form.addEventListener('submit', (e) => {
+				e.preventDefault()
+				if (messageInput.value !== '') {
+					replaceMessage()
+				} else {
+					feedback.classList.add('show')
+					setTimeout(() => {
+						feedback.classList.remove('show')
+					}, 2000)
+				}
 			})
 		</script>
 	</body>
