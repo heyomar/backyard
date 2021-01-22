@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pass The Message</title>
+	</head>
+	<body>
+		<input class="message-input" type="text" />
+		<button class="send-message-btn">Send Message</button>
+
+		<h3>Last Message:</h3>
+		<p class="last-message"></p>
+
+		<script>
+			let messageInput = document.querySelector('.message-input')
+			const sendButton = document.querySelector('.send-message-btn')
+
+			let lastMessage = document.querySelector('.last-message')
+
+			sendButton.addEventListener('click', (e) => {
+				e.preventDefault()
+				let message = messageInput.value
+				messageInput.value = ''
+				lastMessage.innerHTML = message
+			})
+		</script>
+	</body>
+</html>
