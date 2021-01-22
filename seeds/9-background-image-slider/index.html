@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Background Image Gallery</title>
+
+		<style>
+			img {
+				height: 100px;
+			}
+
+			a {
+				padding-top: 20px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="img-ctn">
+			<img class="imgTag" src="img1.png" alt="" />
+		</div>
+		<a class="prev btn" href="#">Last</a>
+		<a class="next btn" href="#">Next</a>
+		<script>
+			const btn = document.querySelectorAll('.btn')
+			const gallery = document.querySelector('.imgTag')
+			let count = 0
+
+			let images = ['img1.png', 'img2.png', 'img3.png', 'img4.png', 'img5.png']
+
+			btn.forEach((element) => {
+				element.addEventListener('click', () => {
+					count++
+					gallery.src = images[count - 1]
+				})
+			})
+		</script>
+	</body>
+</html>
