@@ -29,20 +29,15 @@
 			let counter = 0
 			let images = ['img1.png', 'img2.png', 'img3.png', 'img4.png', 'img5.png']
 
-			function cycleImages() {
-			
-			}
-
 			buttons.forEach((button) => {
 				button.addEventListener('click', () => {
 					if (button.classList.contains('prev')) {
 						counter--
 						if (counter < 0) {
-							counter = images.length -1
+							counter = images.length - 1
 						}
 						gallery.src = images[counter]
-
-					} else if(button.classList.contains('next')) {
+					} else if (button.classList.contains('next')) {
 						counter++
 						if (counter > images.length - 1) {
 							counter = 0
