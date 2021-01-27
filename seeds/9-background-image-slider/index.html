@@ -23,16 +23,32 @@
 		<a class="prev btn" href="#">Last</a>
 		<a class="next btn" href="#">Next</a>
 		<script>
-			const btn = document.querySelectorAll('.btn')
+			const buttons = document.querySelectorAll('.btn')
 			const gallery = document.querySelector('.imgTag')
-			let count = 0
 
+			let counter = 0
 			let images = ['img1.png', 'img2.png', 'img3.png', 'img4.png', 'img5.png']
 
-			btn.forEach((element) => {
-				element.addEventListener('click', () => {
-					count++
-					gallery.src = images[count - 1]
+			function cycleImages() {
+			
+			}
+
+			buttons.forEach((button) => {
+				button.addEventListener('click', () => {
+					if (button.classList.contains('prev')) {
+						counter--
+						if (counter < 0) {
+							counter = images.length -1
+						}
+						gallery.src = images[counter]
+
+					} else if(button.classList.contains('next')) {
+						counter++
+						if (counter > images.length - 1) {
+							counter = 0
+						}
+						gallery.src = images[counter]
+					}
 				})
 			})
 		</script>
