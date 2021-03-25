@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Weight Converter</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="stylesheet"
+			href="https://jenil.github.io/bulmaswatch/lumen/bulmaswatch.min.css"
+		/>
+		<link rel="stylesheet" type="text/css" media="screen" href="app.css" />
+	</head>
+	<body>
+		<header>
+			<nav class="navbar"></nav>
+		</header>
+
+		<main>
+			<div class="section">
+				<div class="container has-text-centered">
+					<h1 class="title is-1">Weight Converter</h1>
+
+					<div class="container">
+						<div class="row">
+							<div class="column is-three-fifths is-offset-one-fifth">
+								<div class="field">
+									<div class="control">
+										<input
+											type="number"
+											name="pounds-input"
+											class="input is-medium pounds-input"
+											placeholder="How many LBS?"
+										/>
+									</div>
+								</div>
+								<div
+									class="box has-text-left has-background-success"
+								>
+									<strong class="is-size-4 has-text-white">Ounces(oz):</strong>
+									<span class="ounces">0</span>
+								</div>
+								<div
+									class="box has-text-left has-background-success"
+								>
+									<strong class="is-size-4 has-text-white">Grams(g):</strong>
+									<span class="grams">0</span>
+								</div>
+								<div
+									class="box has-text-left has-background-success"
+								>
+									<strong class="is-size-4 has-text-white">KiloGrams(Kg):</strong>
+									<span class="kilograms">0</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="footer"></footer>
+
+		<script src="app.js"></script>
+	</body>
+</html>
