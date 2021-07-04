@@ -1,14 +1,17 @@
 <template>
     <h1 class="text-2xl md:text-5xl font-bold mb-8 text-green-500 font-sans text-center">Tip Calculator</h1>
-    <input @keyup.enter="calculateTip()"
-           class="border p-4 rounded-lg w-full text-3xl mb-6 focus:outline-green-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent font-sans"
-           v-model="bill"
-           name="billInput"
-           type="number"
-           placeholder="Enter Total Bill"
-           min="0">
+    <div class="relative mb-6">
+        <input @change="calculateTip()"
+               class="border p-4 pl-8 rounded-lg w-full text-3xl focus:outline-green-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent font-mono"
+               v-model="bill"
+               name="billInput"
+               type="number"
+               placeholder="Enter Total Bill"
+               min="0">
+        <span class="c-dollar-sign text-3xl">$</span>
+    </div>
     <div class="space-y-5 sm:space-x-5 flex text-3xl mb-10 flex-col sm:flex-row sm:space-y-0">
-        <button v-for="(item, i) in  tip_buttons"
+        <button v-for="(item, i) in tip_buttons"
                 :key="item.id"
                 class="border shadow flex-1 py-5 rounded-lg transition hover:bg-green-500 hover:text-white"
                 :class="{ 'bg-green-500 text-white': active_button === i }"
@@ -38,7 +41,7 @@
       props: {},
       data() {
         return {
-          bill: null,
+          bill: 0,
           percent_tipped: 0,
           tip: 0,
           bill_total: 0,
@@ -54,16 +57,31 @@
       methods: {
         calculateTip(event) {
           this.percent_tipped = 100 * event.target.value;
-          this.tip = this.bill * event.target.value;
-          this.bill_total = parseInt(this.bill) + this.tip;
+          this.tip = parseInt(Math.round(this.bill * event.target.value));
+
+          let calc_bill_total = parseInt(this.bill) + this.tip;
+          this.bill_total = Math.round(calc_bill_total);
         },
         toggleActiveButton(button) {
           this.active_button = button;
         },
       },
-      mounted() {},
+      mounted() {
+        this.$nextTick(() => {
+          this.active_button = 1;
+          this.bill = 420.69;
+        });
+      },
     };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style lang="scss">
+    .c-dollar-sign {
+        top: 48%;
+        transform: translateY(-50%);
+        left: 15px;
+        position: absolute;
+        font-family: monospace;
+    }
+</style>
