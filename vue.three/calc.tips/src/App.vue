@@ -20,8 +20,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
-        margin: 40px;
-        max-width: 500px;
+        max-width: 450px;
         padding: 0 20px;
         margin: 40px auto;
     }

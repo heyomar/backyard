@@ -11,13 +11,14 @@
         <span class="c-dollar-sign text-3xl">$</span>
     </div>
     <div class="space-y-5 sm:space-x-5 flex text-3xl mb-10 flex-col sm:flex-row sm:space-y-0">
-        <button v-for="(item, i) in tip_buttons"
+        <button v-for="(item, index) in tip_buttons"
                 :key="item.id"
                 class="border shadow flex-1 py-5 rounded-lg transition hover:bg-green-500 hover:text-white"
-                :class="{ 'bg-green-500 text-white': active_button === i }"
-                @click="calculateTip($event), toggleActiveButton(i)"
+                :class="{ 'bg-green-500 text-white': active_button === index }"
+                @click="calculateTip($event), toggleActiveButton(index)"
                 type="button"
-                :value="item.percent / 100"> {{item.percent}}%</button>
+                :value="item.percent / 100"> {{item.percent}}%
+        </button>
     </div>
     <div class="space-y-2 font-sans text-gray-400 text-sm uppercase font-bold">
         <div class="border-b p-2 relative">
