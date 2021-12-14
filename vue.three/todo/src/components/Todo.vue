@@ -110,8 +110,6 @@ export default {
                     todoTitle: newTodo.value,
                     done: false
                 })
-                console.log(todos.value);
-
                 newTodo.value = ''
             }
         }
