@@ -23,13 +23,43 @@
                     <button
                         @click="markDone(todo)"
                         type="button"
-                        class="text-green-500 px-8 bg-gray-100 w-32 h-full font-bold hover:bg-yellow-600 hover:text-white"
-                    >Done</button>
+                        class="text-green-500 px-8 bg-gray-100 h-full font-bold hover:bg-yellow-600 hover:text-white"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                    </button>
                     <button
                         @click="removeTodo(index)"
                         type="button"
-                        class="text-red-500 px-8 w-32 bg-gray-100 h-full font-bold rounded-r-sm hover:bg-yellow-600 hover:text-white"
-                    >Remove</button>
+                        class="text-red-500 px-8 bg-gray-100 h-full font-bold rounded-r-sm hover:bg-yellow-600 hover:text-white"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
                 </div>
             </li>
         </ul>
@@ -68,7 +98,7 @@ export default {
             for (let index = 0; index < length; index++)
                 text += charset.charAt(Math.floor(Math.random() * charset.length));
 
-            return text;
+            return text.toUpperCase();
         }
 
         function addNewTodo() {
