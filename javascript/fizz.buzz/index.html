@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+        content="IE=edge">
+    <title>Fizz Buzz</title>
+    <meta name="description"
+        content="">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="">
+</head>
+
+<body style="background-color: #333;">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script>
+        /* TERMS
+        const F = 'Fizz'
+        const B = 'Buzz'
+        const FB = 'Fizz-Buzz'
+
+        @DEVELOPER
+        1. create var INDEX and set to 1 type integer, while INDEX is less than 101, iterate through if checks
+        2. if INDEX is divisible by 15 log Fizz-Buzz to console
+        3. else if INDEX is divisible by 3 log Fizz to the console
+        4. else if INDEX is divisible by 5 log Buzz to the console
+        5. finally log any other nunbers to console
+
+        for (let INDEX = 1; INDEX <= 100; INDEX++) {
+            if (INDEX % 15 === 0) {
+                console.log(FB);
+            } else if (INDEX % 3 === 0) {
+                console.log(F);
+            } else if (INDEX % 5 === 0) {
+                console.log(B);
+            } else {
+                console.log(INDEX);
+            }
+        } */
+
+        for (let Current_Number = 1; Current_Number <= 100; Current_Number++) {
+            let Output = '';
+            if (Current_Number % 3 == 0) { Output += 'Fizz' }
+            if (Current_Number % 5 == 0) { Output += 'Buzz' }
+            if (Output == '') { Output = Current_Number }
+            console.log(Output);
+        }
+    </script>
+</body>
+
+</html>
