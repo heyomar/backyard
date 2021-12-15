@@ -12,53 +12,27 @@
             class="bg-yellow-500 hover:bg-yellow-600 hover:text-white font-bold w-36 px-8 text-2xl uppercase text-gray-900 md:rounded-r-sm"
         >Add</button>
     </form>
-    <div class="flex flex-col px-6 max-w-screen-md mx-auto">
-        <ul>
+    <div class="flex flex-col px-6 max-w-screen-md mx-auto mb-24">
+        <ul class="mb-10">
             <li v-for="(todo, index) in todos" :key="todo.id" class="flex flex-wrap rounded-sm mb-5">
                 <h3
                     :class="{ 'line-through': todo.done }"
-                    class="bg-white px-6 py-8 text-xl font-mono text-indigo-600 shadow-sm flex-1 rounded-l-sm"
+                    class="bg-white px-8 py-10 text-2xl font-mono text-black shadow-sm flex-1 rounded-l-sm"
                 >{{ todo.todoTitle }}</h3>
                 <div class="flex flex-col">
                     <button
                         @click="markDone(todo)"
                         type="button"
-                        class="text-green-500 px-8 bg-gray-100 h-full font-bold hover:bg-yellow-600 hover:text-white"
+                        class="px-5 text-green-500 bg-gray-100 h-full font-bold hover:bg-yellow-600 hover:text-white"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
+                        <GetSvg iconName="checkMark"></GetSvg>
                     </button>
                     <button
                         @click="removeTodo(index)"
                         type="button"
-                        class="text-red-500 px-8 bg-gray-100 h-full font-bold rounded-r-sm hover:bg-yellow-600 hover:text-white"
+                        class="text-red-500 px-5 bg-gray-100 h-full font-bold rounded-r-sm hover:bg-yellow-600 hover:text-white"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
+                        <GetSvg iconName="close"></GetSvg>
                     </button>
                 </div>
             </li>
@@ -66,13 +40,13 @@
         <div class="flex gap-x-4">
             <button
                 v-if="todos.length > 1"
-                class="font-mono text-grays-900 bg-yellow-500 text-xl font-bold p-6 uppercase rounded-l-md w-full"
+                class="font-mono text-grays-900 bg-yellow-500 text-xl font-bold p-6 uppercase rounded-l-md w-full hover:text-white hover:bg-yellow-600"
                 type="button"
                 @click="markAllComplete"
             >Complete All</button>
             <button
                 v-if="todos.length > 1"
-                class="font-mono text-grays-900 bg-yellow-500 text-xl font-bold p-6 uppercase rounded-r-md w-full"
+                class="font-mono text-grays-900 bg-yellow-500 text-xl font-bold p-6 uppercase rounded-r-md w-full hover:text-white hover:bg-yellow-800"
                 type="button"
                 @click="removeAllTodos"
             >Remove All</button>
@@ -81,12 +55,30 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-
+import { ref, onMounted, watch } from 'vue'
+import GetSvg from './GetSvg.vue'
 export default {
+    name: 'Todo',
+    components: {
+        GetSvg
+    },
+
+    mounted() {
+        if (localStorage.todos) {
+            this.todos = JSON.parse(localStorage.todos)
+        }
+    },
+    watch: {
+        todos: {
+            handler() {
+                localStorage.todos = JSON.stringify(this.todos)
+            },
+            deep: true
+        }
+    },
     setup() {
         const newTodo = ref('')
-        const todos = ref([])
+        let todos = ref([])
 
         function getRandomNumber(min, max) {
             return Math.round(Math.random() * (max - min) + min)
