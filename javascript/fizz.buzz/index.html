@@ -14,8 +14,6 @@
         content="">
     <meta name="viewport"
         content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-        href="">
 </head>
 
 <body style="background-color: #333;">
@@ -24,37 +22,69 @@
         <![endif]-->
 
     <script>
-        /* TERMS
-        const F = 'Fizz'
-        const B = 'Buzz'
-        const FB = 'Fizz-Buzz'
+        /*
+        |--------------------------------------------------------------------------
+        | METHOD #1
+        |--------------------------------------------------------------------------
+        |
+        | 1. create var INDEX and set to 1(integer), while INDEX is less than or equel to 100, iterate through if checks
+        | 2. if INDEX is divisible by 15 log Fizz-Buzz to console
+        | 3. else if INDEX is divisible by 3 log Fizz to the console
+        | 4. else if INDEX is divisible by 5 log Buzz to the console
+        | 5. finally log any other nunbers to console 
+        |
+        */
 
-        @DEVELOPER
-        1. create var INDEX and set to 1 type integer, while INDEX is less than 101, iterate through if checks
-        2. if INDEX is divisible by 15 log Fizz-Buzz to console
-        3. else if INDEX is divisible by 3 log Fizz to the console
-        4. else if INDEX is divisible by 5 log Buzz to the console
-        5. finally log any other nunbers to console
+        // for (let Index = 1; Index <= 100; Index++) {
+        //     if (Index % 15 === 0) {
+        //         console.log('FizzBuzz');
+        //     } else if (Index % 3 === 0) {
+        //         console.log('Fizz');
+        //     } else if (Index % 5 === 0) {
+        //         console.log('Buzz');
+        //     } else {
+        //         console.log(Index);
+        //     }
+        // }
 
-        for (let INDEX = 1; INDEX <= 100; INDEX++) {
-            if (INDEX % 15 === 0) {
-                console.log(FB);
-            } else if (INDEX % 3 === 0) {
-                console.log(F);
-            } else if (INDEX % 5 === 0) {
-                console.log(B);
-            } else {
-                console.log(INDEX);
-            }
-        } */
+        /*
+        |--------------------------------------------------------------------------
+        | METHOD #3
+        |--------------------------------------------------------------------------
+        */
+        // for (let Current_Number = 1; Current_Number <= 100; Current_Number++) {
+        //     let Output = '';
+        //     if (Current_Number % 3 == 0) { Output += 'Fizz' }
+        //     if (Current_Number % 5 == 0) { Output += 'Buzz' }
+        //     if (Output == '') { Output = Current_Number }
+        //     console.log(Output);
+        // }
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | METHOD #4
+        |--------------------------------------------------------------------------
+        */
         for (let Current_Number = 1; Current_Number <= 100; Current_Number++) {
-            let Output = '';
-            if (Current_Number % 3 == 0) { Output += 'Fizz' }
-            if (Current_Number % 5 == 0) { Output += 'Buzz' }
-            if (Output == '') { Output = Current_Number }
-            console.log(Output);
+            switch (true) {
+                case Current_Number % 15 === 0:
+                    console.log('FizzBuzz');
+                    break
+                case Current_Number % 3 === 0:
+                    console.log('Fizz');
+                    break
+                case Current_Number % 5 === 0:
+                    console.log('Buzz');
+                    break
+                default:
+                    console.log(Current_Number);
+                    break;
+            }
         }
+
+
+
     </script>
 </body>
 
