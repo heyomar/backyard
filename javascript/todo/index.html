@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon"
+        type="image/svg+xml"
+        href="favicon.svg" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla Todo</title>
+</head>
+
+<body class="bg-orange-300">
+    <main class="h-screen">
+        <div id="app"
+            class=" m-6 h-full border-4 border-white bg-slate-500 p-6 text-white">
+
+            <form class="todo_form flex"
+                action="">
+                <label for="addTodo"
+                    class="sr-only">Enter Todo</label>
+                <input class="todo_input_field p-4 rounded shardow w-full capitalize text-xl text-black"
+                    placeholder="enter todo.."
+                    type="text"
+                    name="addTodo">
+                <button class="todo_submit_btn bg-black p-2 w-24 font-bold hover:text-orange-300"
+                    type="submit">Add</button>
+            </form>
+
+            <ul class="todo_list">
+            </ul>
+
+        </div>
+    </main>
+
+
+
+    <script type="module"
+        src="/main.js"></script>
+</body>
+
+</html>
