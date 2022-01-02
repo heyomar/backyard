@@ -1,13 +1,29 @@
 import './style.css'
 
 
-let todo_form = document.querySelector('.todo_form')
-let todo_input_value = document.querySelector('.todo_input_field').value
-let todo_submit_btn = document.querySelector('.todo_submit_btn')
+// Selectors
+const todo_form = document.querySelector('.todo_form')
+const todo_submit_btn = document.querySelector('.todo_submit_btn')
+const todo_list = document.querySelector('.todo_list')
+let todo_input_field = document.querySelector('.todo_input_field')
 
-todo_submit_btn.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log('clicked submit', todo_input_value);
-})
+// Event Listeners
+todo_submit_btn.addEventListener('click', addTodo)
 
-console.log(todo_form, todo_submit_btn);
+// Functions
+function addTodo(event) {
+    event.preventDefault()
+
+    const list_item_element = document.createElement('li')
+
+    list_item_element.classList.add('todo_item')
+    list_item_element.innerText = todo_input_field.value
+
+    todo_list.appendChild(list_item_element)
+
+    todo_input_field.value = ''
+}
+
+
+
+
