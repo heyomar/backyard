@@ -9,17 +9,19 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
     <title>Vanilla Todo</title>
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css"
+        rel="stylesheet">
 </head>
 
 <body class="bg-orange-300">
-    <main class="h-screen">
+    <main class="h-full">
         <div id="app"
-            class=" m-6 h-full border-4 border-white bg-slate-500 p-6 text-white">
+            class="m-6 border-white p-6 text-white rounded-lg">
 
-            <form class="todo_form flex">
+            <form class="todo_form flex shadow">
                 <label for="addTodo"
                     class="sr-only">Enter Todo</label>
-                <input class="todo_input_field p-4 rounded shardow w-full capitalize text-xl text-black"
+                <input class="todo_input_field p-4 shardow w-full capitalize text-lg text-black"
                     placeholder="enter todo.."
                     type="text"
                     name="addTodo">
@@ -30,6 +32,8 @@
             <section class="text-black mt-8">
                 <ul class="todo_list flex flex-col gap-y-5"></ul>
             </section>
+
+            <span class="hidden opacity-50 line-through"></span>
         </div>
     </main>
 

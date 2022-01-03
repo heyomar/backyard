@@ -3,5 +3,19 @@
 @tailwind utilities;
 
 ul li {
-    @apply shadow px-6 py-8 bg-white text-2xl font-bold;
+    @apply shadow p-4 capitalize bg-white text-2xl font-bold w-full flex items-center relative rounded;
+}
+
+.btn_check {
+    @apply bg-green-200 py-4 px-6 ml-4 absolute;
+    right: 70px;
+}
+
+.btn_trash {
+    @apply bg-red-200 py-4 px-6 absolute line-through;
+    right: 0;
+}
+
+i {
+    pointer-events: none;
 }
