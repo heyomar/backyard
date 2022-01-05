@@ -27,6 +27,17 @@
                     name="addTodo">
                 <button class="todo_submit_btn bg-black p-2 w-24 font-bold hover:text-orange-300"
                     type="submit">Add</button>
+                <div class="filter_input">
+                    <label class="sr-only"
+                        for="filter-todos">Filter Todos</label>
+                    <select name="filter-todos"
+                        class="text-white bg-black h-full text-center border-l p-4 select"
+                        id="">
+                        <option value="all">All</option>
+                        <option value="completed">completed</option>
+                        <option value="uncompleted">uncompleted</option>
+                    </select>
+                </div>
             </form>
 
             <section class="text-black mt-8">
