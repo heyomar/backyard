@@ -13,15 +13,16 @@
         rel="stylesheet">
 </head>
 
-<body class="bg-orange-300">
+<body
+    class="bg-orange-300 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
     <main class="h-full">
         <div id="app"
             class="m-6 border-white p-6 text-white rounded-lg">
 
-            <form class="todo_form flex shadow">
+            <form class="todo_form flex shadow relative">
                 <label for="addTodo"
                     class="sr-only">Enter Todo</label>
-                <input class="todo_input_field p-4 shardow w-full capitalize text-lg text-black"
+                <input class="todo_input_field p-4 shadow w-full capitalize text-lg text-black"
                     placeholder="enter todo.."
                     type="text"
                     name="addTodo">
@@ -40,7 +41,7 @@
                 </div>
             </form>
 
-            <section class="text-black mt-8">
+            <section class="text-black mt-20">
                 <ul class="todo_list flex flex-col gap-y-5"></ul>
             </section>
 

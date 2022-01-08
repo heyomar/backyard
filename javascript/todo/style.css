@@ -19,3 +19,8 @@ ul li {
 i {
     pointer-events: none;
 }
+
+.error::before {
+    content: "There was nothing to add, please try again.";
+    @apply bg-red-200 text-red-700 font-mono w-max text-xs p-2 -bottom-[40px] border-red-700 border absolute block min-w-min;
+}

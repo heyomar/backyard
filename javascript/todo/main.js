@@ -1,10 +1,11 @@
 import './style.css'
 
 // Selectors
+const todo_form = document.querySelector('.todo_form')
 const todo_submit_btn = document.querySelector('.todo_submit_btn')
 const todo_list = document.querySelector('.todo_list')
 const filter_input = document.querySelector('.filter_input')
-let todo_input_field = document.querySelector('.todo_input_field')
+const todo_input_field = document.querySelector('.todo_input_field')
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos);
@@ -16,20 +17,23 @@ filter_input.addEventListener('click', filterTodos)
 function addTodo(event) {
     event.preventDefault()
 
+    // Check if actual value entered in the input, then inform the user.
     if (todo_input_field.value === '' || null || undefined) {
+        todo_form.classList.add('error')
         return
+    } else {
+        todo_form.classList.remove('error')
     }
 
     const todo_item = document.createElement('li')
-
     todo_item.classList.add('todo_item', 'uncompleted')
     todo_item.innerText = todo_input_field.value
-
     todo_list.appendChild(todo_item)
 
-    // add todo to local storage
+    // Add todo to local storage
     saveToLocalStorage(todo_input_field.value)
 
+    // Reset input field to nothing.
     todo_input_field.value = ''
 
     // Add buttons
@@ -86,7 +90,7 @@ function filterTodos(event) {
 }
 
 function saveToLocalStorage(todo) {
-    // Check if there are todos already
+    // Check if there are todos already and set them.
     let todos = setLocalStorageTodos()
 
     todos.push(todo)
@@ -94,17 +98,16 @@ function saveToLocalStorage(todo) {
 }
 
 function getTodos() {
+    // Check if there are todos already and set them.
     let todos = setLocalStorageTodos()
 
     todos.forEach((item) => {
         const todo_item = document.createElement('li')
-
         todo_item.classList.add('todo_item', 'uncompleted')
         todo_item.innerText = item
-
         todo_list.appendChild(todo_item)
 
-        // Add buttons
+        // Add todo action buttons.
         const check_btn = document.createElement('button')
         check_btn.classList.add('btn_check')
         check_btn.innerHTML = '<i class="lni lni-checkmark-circle"></i>'
@@ -118,6 +121,7 @@ function getTodos() {
 }
 
 function deleteTodo(todo) {
+    // Check if there are todos already and set them.
     let todos = setLocalStorageTodos()
     const todoIndex = todo.innerText
     todos.splice(todos.indexOf(todoIndex), 1)
@@ -125,7 +129,7 @@ function deleteTodo(todo) {
 }
 
 function setLocalStorageTodos() {
-    let todos;
+    let todos
     if (localStorage.getItem('todos') === null) {
         todos = []
     } else {
