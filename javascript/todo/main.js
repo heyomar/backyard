@@ -1,8 +1,6 @@
 import './style.css'
 
-
 // Selectors
-const todo_form = document.querySelector('.todo_form')
 const todo_submit_btn = document.querySelector('.todo_submit_btn')
 const todo_list = document.querySelector('.todo_list')
 const filter_input = document.querySelector('.filter_input')
@@ -28,6 +26,7 @@ function addTodo(event) {
     todo_item.innerText = todo_input_field.value
 
     todo_list.appendChild(todo_item)
+
     // add todo to local storage
     saveToLocalStorage(todo_input_field.value)
 
@@ -88,24 +87,14 @@ function filterTodos(event) {
 
 function saveToLocalStorage(todo) {
     // Check if there are todos already
-    let todos;
-    if (localStorage.getItem('todos') === null) {
-        todos = []
-    } else {
-        todos = JSON.parse(localStorage.getItem('todos'))
-    }
+    let todos = setLocalStorageTodos()
 
     todos.push(todo)
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
 function getTodos() {
-    let todos;
-    if (localStorage.getItem('todos') === null) {
-        todos = []
-    } else {
-        todos = JSON.parse(localStorage.getItem('todos'))
-    }
+    let todos = setLocalStorageTodos()
 
     todos.forEach((item) => {
         const todo_item = document.createElement('li')
@@ -129,15 +118,18 @@ function getTodos() {
 }
 
 function deleteTodo(todo) {
+    let todos = setLocalStorageTodos()
+    const todoIndex = todo.innerText
+    todos.splice(todos.indexOf(todoIndex), 1)
+    localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+function setLocalStorageTodos() {
     let todos;
     if (localStorage.getItem('todos') === null) {
         todos = []
     } else {
         todos = JSON.parse(localStorage.getItem('todos'))
     }
-    const todoIndex = todo.innerText
-    console.log(todoIndex);
-    todos.splice(todos.indexOf(todoIndex), 1)
-
-    localStorage.setItem('todos', JSON.stringify(todos))
+    return todos
 }
