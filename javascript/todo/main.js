@@ -9,6 +9,7 @@ const filter_input = document.querySelector('.filter_input')
 let todo_input_field = document.querySelector('.todo_input_field')
 
 // Event Listeners
+document.addEventListener('DOMContentLoaded', getTodos);
 todo_submit_btn.addEventListener('click', addTodo)
 todo_list.addEventListener('click', buttonActions)
 filter_input.addEventListener('click', filterTodos)
@@ -27,6 +28,8 @@ function addTodo(event) {
     todo_item.innerText = todo_input_field.value
 
     todo_list.appendChild(todo_item)
+    // add todo to local storage
+    saveToLocalStorage(todo_input_field.value)
 
     todo_input_field.value = ''
 
@@ -48,6 +51,7 @@ function buttonActions(event) {
 
     if (event.target.classList.contains('btn_trash')) {
         current_todo.remove()
+        deleteTodo(current_todo)
     }
 
     if (event.target.classList.contains('btn_check')) {
@@ -80,6 +84,60 @@ function filterTodos(event) {
                 }
         }
     })
-
 }
 
+function saveToLocalStorage(todo) {
+    // Check if there are todos already
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = []
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+
+    todos.push(todo)
+    localStorage.setItem('todos', JSON.stringify(todos))
+}
+
+function getTodos() {
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = []
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+
+    todos.forEach((item) => {
+        const todo_item = document.createElement('li')
+
+        todo_item.classList.add('todo_item', 'uncompleted')
+        todo_item.innerText = item
+
+        todo_list.appendChild(todo_item)
+
+        // Add buttons
+        const check_btn = document.createElement('button')
+        check_btn.classList.add('btn_check')
+        check_btn.innerHTML = '<i class="lni lni-checkmark-circle"></i>'
+        todo_item.appendChild(check_btn)
+
+        const delete_btn = document.createElement('button')
+        delete_btn.classList.add('btn_trash')
+        delete_btn.innerHTML = '<i class="lni lni-trash-can"></i>'
+        todo_item.appendChild(delete_btn)
+    })
+}
+
+function deleteTodo(todo) {
+    let todos;
+    if (localStorage.getItem('todos') === null) {
+        todos = []
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    const todoIndex = todo.innerText
+    console.log(todoIndex);
+    todos.splice(todos.indexOf(todoIndex), 1)
+
+    localStorage.setItem('todos', JSON.stringify(todos))
+}
